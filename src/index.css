@@ -2,13 +2,13 @@
     --primary: #BB86FC;
     --primary-variant: #3700B3;
     --secondary: #03DAC6;
-    --background: #DDDDDD;
+    --background: #DDE6ED; /* #DDDDDD */
     --suface: #FFFFFF;
     --error: #CF6679;
     --warning: #F39C12;
-    --on-background: #333333;
-    --on-background-grey: #6d6d6d;
-    --on-surface: #333333;
+    --on-background: #27374D; /* #333333 */
+    --on-background-grey: #526D82; /* #6d6d6d */
+    --on-surface: #DFD0B8;
 }
 
 [data-theme="dark"] {
@@ -58,6 +58,10 @@ header .navigation ul li {
     margin: 0 8px;
 }
 
+.navigation a {
+    text-decoration: none;
+}
+
 main {
     margin: 0 auto;
     padding: 32px 0;
@@ -81,6 +85,10 @@ main {
 
 .thread-item__title {
     margin: 4px 0;
+}
+
+.thread-item__title a{
+    text-decoration: none;
 }
 
 .thread-item__createdAt {
@@ -197,6 +205,7 @@ main {
     font-size: 14px;
     min-height: 100px;
     padding: 8px;
+    margin-top: 8px;
     margin-bottom: 16px;
 }
 
@@ -413,18 +422,4 @@ main {
 
 .leaderboard-item__score {
     font-size: 24px
-}
-
-.page-not-found {
-    margin-top: 32px;
-}
-
-.page-not-found h2 {
-    text-align: center;
-    color: var(--on-background-grey);
-}
-
-.page-not-found p {
-    text-align: center;
-    color: var(--on-background-grey);
 }
