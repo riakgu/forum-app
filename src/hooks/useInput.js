@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 function useInput(defaultValue = '') {
   const [value, setValue] = useState(defaultValue);
@@ -12,12 +12,20 @@ function useInput(defaultValue = '') {
 
 export function useBodyInput(defaultValue = '') {
   const [value, setValue] = useState(defaultValue);
+  const ref = useRef(null);
 
   const onBodyChangeHandler = (event) => {
     setValue(event.target.innerHTML);
   };
 
-  return [value, onBodyChangeHandler];
+  const reset = () => {
+    setValue('');
+    if (ref.current) {
+      ref.current.innerHTML = '';
+    }
+  };
+
+  return [value, onBodyChangeHandler, reset, ref];
 }
 
 export default useInput;
