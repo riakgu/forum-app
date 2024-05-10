@@ -1,4 +1,4 @@
-export default function postedAt(date) {
+function postedAt(date) {
   const now = new Date();
   const posted = new Date(date);
   const diff = now - posted;
@@ -22,4 +22,4 @@ export default function postedAt(date) {
   return 'just now';
 }
 
-export { postedAt };
+export default postedAt;
