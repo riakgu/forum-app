@@ -1,4 +1,4 @@
-function postedAt(date) {
+export default function postedAt(date) {
   const now = new Date();
   const posted = new Date(date);
   const diff = now - posted;
@@ -9,11 +9,14 @@ function postedAt(date) {
 
   if (diffDays > 0) {
     return `${diffDays} days ago`;
-  } if (diffHours > 0) {
+  }
+  if (diffHours > 0) {
     return `${diffHours} hours ago`;
-  } if (diffMinutes > 0) {
+  }
+  if (diffMinutes > 0) {
     return `${diffMinutes} minutes ago`;
-  } if (diffSeconds > 0) {
+  }
+  if (diffSeconds > 0) {
     return `${diffSeconds} seconds ago`;
   }
   return 'just now';
