@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Link, Route, Routes, useNavigate} from 'react-router-dom';
+import {Navigate, Route, Routes, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import LoginPage from './pages/LoginPage';
@@ -45,10 +45,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/login" element={!!authUser ? <Navigate to="/" /> : <LoginPage />}/>
+          <Route path="/register" element={!!authUser ? <Navigate to="/" /> : <RegisterPage />}/>
           <Route path="/thread/:id" element={<ThreadPage/>}/>
-          <Route path="/thread/new" element={<ThreadAddPage/>}/>
+          <Route path="/thread/create" element={<ThreadAddPage/>}/>
           <Route path="/leaderboard" element={<LeaderboardPage/>}/>
         </Routes>
       </main>
