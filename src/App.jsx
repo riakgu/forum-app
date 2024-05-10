@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import {Link, Route, Routes, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import LoginPage from './pages/LoginPage';
@@ -10,17 +10,19 @@ import LeaderboardPage from './pages/LeaderboardPage';
 import ThreadAddPage from './pages/ThreadAddPage';
 import { asyncLogout } from './states/authUser/action';
 import { asyncIsPreload } from './states/isPreload/action';
-import Header from './components/Header';
+import Navbar from "./components/Navbar";
+import LoadingBar from 'react-redux-loading-bar';
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { authUser, isPreload } = useSelector((state) => state);
+  const authUser = useSelector(state => state.authUser);
+  const isPreload = useSelector(state => state.isPreload);
 
   const onLogout = () => {
     dispatch(asyncLogout()).then(({ status }) => {
-      if (status === 'success') navigate('/login');
+      if (status === 'success') navigate('/');
     });
   };
 
@@ -35,15 +37,19 @@ function App() {
   return (
     <div className="app-container">
       <Toaster />
-      <Header authUser={authUser} logout={onLogout} />
+      <header>
+        <h1>Forum App</h1>
+        <Navbar logout={onLogout} authUser={authUser} />
+      </header>
+      <LoadingBar style={{ backgroundColor: '#27374D' }}/>
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/thread/:id" element={<ThreadPage />} />
-          <Route path="/thread/new" element={<ThreadAddPage />} />
-          <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/thread/:id" element={<ThreadPage/>}/>
+          <Route path="/thread/new" element={<ThreadAddPage/>}/>
+          <Route path="/leaderboard" element={<LeaderboardPage/>}/>
         </Routes>
       </main>
     </div>
