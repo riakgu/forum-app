@@ -87,7 +87,7 @@ main {
     margin: 4px 0;
 }
 
-.thread-item__title a{
+.thread-item__title a {
     text-decoration: none;
 }
 
@@ -96,6 +96,21 @@ main {
     font-size: 14px;
     margin: 4px 0;
 }
+
+.thread-item__createdBy {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--on-background-grey);
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.thread-item__createdBy img {
+    border-radius: 50%;
+    width: 18px;
+}
+
 
 .thread-item__body {
     margin-top: 16px;
