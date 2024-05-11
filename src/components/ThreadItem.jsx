@@ -50,7 +50,7 @@ function ThreadItem({
 
       <button
         type={"button"}
-        className={"category-item selected"}
+        className={"thread-item__category"}
       >{`#${category}`}</button>
 
       <p

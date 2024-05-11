@@ -111,6 +111,15 @@ main {
     width: 18px;
 }
 
+.thread-item__category {
+    background-color: var(--on-background);
+    border: 1px solid #2d3e50;
+    border-radius: 8px;
+    color: var(--background);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+}
 
 .thread-item__body {
     margin-top: 16px;
