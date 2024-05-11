@@ -45,7 +45,7 @@ function App() {
     { path: ROUTE_PATHS.LOGIN, element: authUser ? <Navigate to={ROUTE_PATHS.HOME} /> : <LoginPage /> },
     { path: ROUTE_PATHS.REGISTER, element: authUser ? <Navigate to={ROUTE_PATHS.HOME} /> : <RegisterPage /> },
     { path: ROUTE_PATHS.THREAD, element: <ThreadPage /> },
-    { path: ROUTE_PATHS.THREAD_CREATE, element: <ThreadAddPage /> },
+    { path: ROUTE_PATHS.THREAD_CREATE, element: authUser ? <ThreadAddPage /> : <Navigate to={ROUTE_PATHS.LOGIN} />  },
     { path: ROUTE_PATHS.LEADERBOARD, element: <LeaderboardPage /> }
   ]);
 
