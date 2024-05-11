@@ -80,8 +80,5 @@
     "vitest": "^1.6.0",
     "wait-on": "^7.2.0",
     "webpack": "^5.91.0"
-  },
-  "overrides": {
-    "react-refresh": "0.11.0"
   }
 }
