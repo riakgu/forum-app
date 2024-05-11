@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "vitest",
     "e2e": "cypress run",
-    "ci:test": "vitest --no-watch && start-server-and-test start http-get://0.0.0.0:3000 e2e",
+    "ci:test": "cross-env NODE_ENV=test vitest --no-watch && start-server-and-test start http-get://0.0.0.0:3000 e2e",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -61,6 +61,7 @@
     "@testing-library/react": "^14.3.1",
     "@testing-library/user-event": "^14.5.2",
     "@vitejs/plugin-react": "^4.2.1",
+    "cross-env": "^7.0.3",
     "cypress": "^13.9.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
