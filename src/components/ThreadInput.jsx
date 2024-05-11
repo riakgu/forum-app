@@ -23,8 +23,16 @@ function ThreadInput({ createThread }) {
         value={category}
         onChange={setCategory}
       />
-      <label htmlFor="body">Body</label>
-      <div id={body} className="input-body" contentEditable onInput={setBody} />
+      <label htmlFor="body" id="bodyLabel">
+        Body
+      </label>
+      <div
+        aria-labelledby="bodyLabel"
+        className="input-body"
+        contentEditable
+        onInput={setBody}
+      />
+
       <button type="submit">Submit</button>
     </form>
   );
