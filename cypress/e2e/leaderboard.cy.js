@@ -7,7 +7,7 @@
 
 describe('Leaderboard', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/leaderboard');
+    cy.visit('http://localhost:5173/leaderboard');
   });
 
   it('should display leaderboard page correctly', () => {

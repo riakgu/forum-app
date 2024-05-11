@@ -1,48 +1,29 @@
 {
-  "name": "forum-app",
-  "version": "0.1.0",
+  "name": "forum-vite",
   "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^2.2.4",
-    "prop-types": "^15.8.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hot-toast": "^2.4.1",
-    "react-icons": "^5.2.1",
-    "react-redux": "^8.1.2",
-    "react-redux-loading-bar": "^5.0.8",
-    "react-router-dom": "^6.23.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "vite",
+    "build": "vite build",
     "test": "vitest",
     "e2e": "cypress run",
-    "ci:test": "vitest --no-watch && start-server-and-test start http-get://localhost:3000 e2e",
-    "eject": "react-scripts eject",
+    "ci:test": "vitest --no-watch && start-server-and-test dev http-get://localhost:5173 e2e",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:storybook/recommended"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.4",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.2.1",
+    "react-redux": "^9.1.2",
+    "react-redux-loading-bar": "^5.0.8",
+    "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.3.5",
@@ -53,13 +34,14 @@
     "@storybook/addon-links": "^8.0.10",
     "@storybook/addon-onboarding": "^8.0.10",
     "@storybook/blocks": "^8.0.10",
-    "@storybook/preset-create-react-app": "^8.0.10",
     "@storybook/react": "^8.0.10",
-    "@storybook/react-webpack5": "^8.0.10",
+    "@storybook/react-vite": "^8.0.10",
     "@storybook/test": "^8.0.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.3.1",
     "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "cypress": "^13.9.0",
     "eslint": "^8.57.0",
@@ -69,12 +51,14 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.6",
     "eslint-plugin-storybook": "^0.8.0",
     "globals": "^15.2.0",
+    "jsdom": "^24.0.0",
     "redux-mock-store": "^1.5.4",
     "start-server-and-test": "^2.0.3",
     "storybook": "^8.0.10",
-    "vitest": "^1.6.0",
-    "webpack": "^5.91.0"
+    "vite": "^5.2.0",
+    "vitest": "^1.6.0"
   }
 }
