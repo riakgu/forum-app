@@ -23,8 +23,7 @@ describe('RegisterInput component', () => {
     });
 
     it('should handle name typing correctly', async () => {
-        const mockRegister = vi.fn();
-        render(<RegisterInput register={mockRegister} />);
+        render(<RegisterInput register={() => {}} />);
         const nameInput = screen.getByLabelText('Name');
 
         await userEvent.type(nameInput, 'Rizky');
@@ -33,8 +32,7 @@ describe('RegisterInput component', () => {
     });
 
     it('should handle email typing correctly', async () => {
-        const mockRegister = vi.fn();
-        render(<RegisterInput register={mockRegister} />);
+        render(<RegisterInput register={() => {}} />);
         const emailInput = screen.getByLabelText('Email');
 
         await userEvent.type(emailInput, 'riakgu@test.com');
@@ -43,8 +41,7 @@ describe('RegisterInput component', () => {
     });
 
     it('should handle password typing correctly', async () => {
-        const mockRegister = vi.fn();
-        render(<RegisterInput register={mockRegister} />);
+        render(<RegisterInput register={() => {}} />);
         const passwordInput = screen.getByLabelText('Password');
 
         await userEvent.type(passwordInput, 'riakgu');

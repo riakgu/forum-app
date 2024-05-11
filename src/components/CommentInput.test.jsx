@@ -16,9 +16,10 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import CommentInput from "./CommentInput";
 import {MemoryRouter} from "react-router-dom";
+import matchers from "@testing-library/jest-dom/matchers";
 
 const mockStore = configureStore([]);
-let store;
+expect.extend(matchers);
 
 describe('CommentInput component', () => {
     beforeEach(() => {
@@ -30,7 +31,7 @@ describe('CommentInput component', () => {
     });
 
     it('should not display the comment input area when the user is not authenticated', async () => {
-        store = mockStore({
+        const store = mockStore({
             authUser: false
         });
         render(
@@ -46,7 +47,7 @@ describe('CommentInput component', () => {
     });
 
     it('should handle comment typing correctly when user is authenticated', async () => {
-        store = mockStore({
+        const store = mockStore({
             authUser: true
         });
         render(
@@ -62,7 +63,7 @@ describe('CommentInput component', () => {
     });
 
     it('should call createComment function when Submit button is clicked', async () => {
-        store = mockStore({
+        const store = mockStore({
             authUser: true
         });
         const mockCreateComment = vi.fn();

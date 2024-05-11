@@ -23,8 +23,7 @@ describe('ThreadInput component', () => {
     });
 
     it('should handle title typing correctly', async () => {
-        const mockCreateThread = vi.fn();
-        render(<ThreadInput createThread={mockCreateThread} />);
+        render(<ThreadInput createThread={() => {}} />);
         const titleInput = screen.getByLabelText('Title');
 
         await userEvent.type(titleInput, 'Curhat');
@@ -33,8 +32,7 @@ describe('ThreadInput component', () => {
     });
 
     it('should handle category typing correctly', async () => {
-        const mockCreateThread = vi.fn();
-        render(<ThreadInput createThread={mockCreateThread} />);
+        render(<ThreadInput createThread={() => {}} />);
         const categoryInput = screen.getByLabelText('Category');
 
         await userEvent.type(categoryInput, 'reactsusah');
@@ -43,8 +41,7 @@ describe('ThreadInput component', () => {
     });
 
     it('should handle body typing correctly', async () => {
-        const mockCreateThread = vi.fn();
-        render(<ThreadInput createThread={mockCreateThread} />);
+        render(<ThreadInput createThread={() => {}} />);
         const bodyInput = screen.getByLabelText('Body');
 
         await userEvent.type(bodyInput, 'Banget hahah');
@@ -52,7 +49,7 @@ describe('ThreadInput component', () => {
         expect(bodyInput).toHaveTextContent('Banget hahah');
     });
 
-        it('should call createThread function when Submit button is clicked', async () => {
+    it('should call createThread function when Submit button is clicked', async () => {
         const mockCreateThread = vi.fn();
         render(<ThreadInput createThread={mockCreateThread} />);
         const titleInput = screen.getByLabelText('Title');

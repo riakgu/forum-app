@@ -22,8 +22,7 @@ describe('LoginInput component', () => {
     });
 
     it('should handle email typing correctly', async () => {
-        const mockLogin = vi.fn();
-        render(<LoginInput login={mockLogin} />);
+        render(<LoginInput login={() => {}} />);
         const emailInput = screen.getByLabelText('Email');
 
         await userEvent.type(emailInput, 'riakgu@test.com');
@@ -32,8 +31,7 @@ describe('LoginInput component', () => {
     });
 
     it('should handle password typing correctly', async () => {
-        const mockLogin = vi.fn();
-        render(<LoginInput login={mockLogin} />);
+        render(<LoginInput login={() => {}} />);
         const passwordInput = screen.getByLabelText('Password');
 
         await userEvent.type(passwordInput, 'riakgu');
