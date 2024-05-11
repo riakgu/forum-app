@@ -23,6 +23,7 @@ function CommentInput({ createComment }) {
       {authUser ? (
         <form className="comment-input" onSubmit={onFormSubmit}>
           <div
+            aria-label="Comment"
             ref={refContent}
             className="comment-input__field"
             contentEditable
