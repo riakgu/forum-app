@@ -1,9 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-function LeaderboardItem({
-  id, avatar, name, score,
-}) {
+function LeaderboardItem({ id, avatar, name, score }) {
   return (
     <div className="leaderboard-item" key={id}>
       <div className="leaderboard-item__user-info">

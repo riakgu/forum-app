@@ -1,10 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import ThreadItem from './ThreadItem';
+import React from "react";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import ThreadItem from "./ThreadItem";
 
 function ThreadList({ threads }) {
-  const { users } = useSelector((state) => state);
+  const users = useSelector((state) => state.users);
 
   return (
     <section className="threads-list">
@@ -27,7 +27,7 @@ ThreadList.propTypes = {
       title: PropTypes.string.isRequired,
       body: PropTypes.string,
       createdAt: PropTypes.string.isRequired,
-      totalComments: PropTypes.number,
+      totalComments: PropTypes.number.isRequired,
       upVotesBy: PropTypes.arrayOf(PropTypes.string),
       downVotesBy: PropTypes.arrayOf(PropTypes.string),
     }),

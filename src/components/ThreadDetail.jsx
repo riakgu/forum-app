@@ -1,62 +1,61 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import postedAt from "../utils/postedAt";
+import { asyncToggleVoteDetailThread } from "../states/threadDetail/action";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import PropTypes from "prop-types";
 import {
-  FaComment,
   FaRegThumbsDown,
   FaRegThumbsUp,
   FaThumbsDown,
   FaThumbsUp,
 } from "react-icons/fa";
-import { asyncToggleVoteThread } from "../states/threads/action";
-import postedAt from "../utils/postedAt";
 
-function ThreadItem({
-  owner,
+function ThreadDetail({
   id,
   category,
   title,
   body,
   createdAt,
-  totalComments,
+  owner,
   upVotesBy,
   downVotesBy,
 }) {
   const dispatch = useDispatch();
+
   const authUser = useSelector((state) => state.authUser);
 
-  const onToggleVoteThread = (voteType) => {
+  const onToggleVoteDetailThread = (voteType) => {
     if (!authUser) {
       toast("Please login first");
-      return;
+      return null;
     }
     dispatch(
-      asyncToggleVoteThread({ threadId: id, voteType, userId: authUser.id }),
+      asyncToggleVoteDetailThread({
+        threadId: id,
+        voteType,
+        userId: authUser.id,
+      }),
     );
   };
 
   return (
-    <article className="thread-item">
-      <h2 className="thread-item__title">
-        <Link to={`/thread/${id}`}>{title}</Link>
-      </h2>
+    <div className={"thread-detail"} key={id}>
+      <div className="thread-content">
+        <h2>{title}</h2>
+        <p className="thread-item__createdBy">
+          Created By <img src={owner.avatar} alt={owner.name} /> {owner.name}{" "}
+          {postedAt(createdAt)}
+        </p>
 
-      <p className="thread-item__createdBy">
-        Created By <img src={owner.avatar} alt={owner.name} /> {owner.name}{" "}
-        {postedAt(createdAt)}
-      </p>
+        <button type={"button"} className={"category-item selected"}>
+          {`#${category}`}
+        </button>
 
-      <button
-        type={"button"}
-        className={"category-item selected"}
-      >{`#${category}`}</button>
-
-      <p
-        className="thread-item__body"
-        dangerouslySetInnerHTML={{ __html: body }}
-      />
+        <div className="thread-content__body">
+          <p dangerouslySetInnerHTML={{ __html: body }} />
+        </div>
+      </div>
 
       <div className="thread-item__footer">
         <div className="thread-item__like">
@@ -64,7 +63,7 @@ function ThreadItem({
             className="thread-upvote__button"
             type="button"
             onClick={() =>
-              onToggleVoteThread(upVotesBy.includes(authUser?.id) ? 0 : 1)
+              onToggleVoteDetailThread(upVotesBy.includes(authUser?.id) ? 0 : 1)
             }
           >
             {upVotesBy.includes(authUser?.id) ? (
@@ -80,7 +79,9 @@ function ThreadItem({
             className="thread-downvote__button"
             type="button"
             onClick={() =>
-              onToggleVoteThread(downVotesBy.includes(authUser?.id) ? 0 : -1)
+              onToggleVoteDetailThread(
+                downVotesBy.includes(authUser?.id) ? 0 : -1,
+              )
             }
           >
             {downVotesBy.includes(authUser?.id) ? (
@@ -91,27 +92,20 @@ function ThreadItem({
           </button>
           <span>{downVotesBy.length}</span>
         </div>
-        <div className="thread-item__comments">
-          <FaComment />
-          <span>{totalComments}</span>
-        </div>
       </div>
-    </article>
+    </div>
   );
 }
 
-ThreadItem.propTypes = {
-  owner: PropTypes.shape({
-    avatar: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }),
+ThreadDetail.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  totalComments: PropTypes.number.isRequired,
-  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  owner: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-export default ThreadItem;
+export default ThreadDetail;

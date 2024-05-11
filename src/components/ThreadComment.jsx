@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { asyncCreateComment } from '../states/threadDetail/action';
-import CommentInput from './CommentInput';
-import CommentList from './CommentList';
+import React from "react";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { asyncCreateComment } from "../states/threadDetail/action";
+import CommentInput from "./CommentInput";
+import CommentList from "./CommentList";
 
 function ThreadComment({ threadId, comments }) {
   const dispatch = useDispatch();

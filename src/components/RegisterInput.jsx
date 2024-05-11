@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import useInput from '../hooks/useInput';
+import React from "react";
+import PropTypes from "prop-types";
+import useInput from "../hooks/useInput";
 
 function RegisterInput({ register }) {
-  const [name, setName] = useInput('');
-  const [email, setEmail] = useInput('');
-  const [password, setPassword] = useInput('');
+  const [name, setName] = useInput("");
+  const [email, setEmail] = useInput("");
+  const [password, setPassword] = useInput("");
 
   const onFormSubmit = (event) => {
     event.preventDefault();
