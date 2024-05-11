@@ -12,8 +12,10 @@ function RegisterPage() {
   const onRegister = async ({ name, email, password }) => {
     dispatch(asyncRegisterUser({ name, email, password })).then(
       ({ status }) => {
-        if (status === "success") navigate("/login");
-        toast.success("Registration successfully!")
+        if (status === "success") {
+            navigate("/login");
+            toast.success("Registration successfully!")
+        }
       },
     );
   };
