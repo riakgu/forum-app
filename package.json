@@ -20,6 +20,7 @@
     "build": "react-scripts build",
     "test": "vitest",
     "e2e": "cypress run",
+    "ci:test": "vitest --no-watch && start-server-and-test start http-get://localhost:3000 e2e",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -71,6 +72,7 @@
     "eslint-plugin-storybook": "^0.8.0",
     "globals": "^15.2.0",
     "redux-mock-store": "^1.5.4",
+    "start-server-and-test": "^2.0.3",
     "storybook": "^8.0.10",
     "vitest": "^1.6.0",
     "webpack": "^5.91.0"
