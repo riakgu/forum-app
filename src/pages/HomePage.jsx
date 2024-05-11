@@ -1,28 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaPlus } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
-import CategoryList from '../components/CategoryList';
-import ThreadList from '../components/ThreadList';
-import { asyncPopulateUsersAndThreads } from '../states/shared/action';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import CategoryList from "../components/CategoryList";
+import ThreadList from "../components/ThreadList";
+import { asyncPopulateUsersAndThreads } from "../states/shared/action";
+import HomeAction from "../components/HomeAction";
 
 function HomePage() {
   const dispatch = useDispatch();
-  const { threads, authUser } = useSelector((state) => state);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
 
-  const onKeyword = (category) => setKeyword((state) => (state === category ? '' : category));
+  const threads = useSelector((state) => state.threads);
+  const authUser = useSelector((state) => state.authUser);
+
+  const threadsList = threads.filter((thread) =>
+    thread.category.includes(keyword),
+  );
+  const categories = threads
+    .map((item) => item.category)
+    .filter(
+      (category, index, currentCategory) =>
+        currentCategory.indexOf(category) === index,
+    );
+
+  const onKeyword = (category) => {
+    setKeyword((state) => {
+      return state === category ? "" : category;
+    });
+  };
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads());
   }, []);
-
-  const threadsList = threads.filter((thread) => thread.category.includes(keyword));
-  const categories = threads
-    .map((item) => item.category)
-    .filter(
-      (category, index, currentCategory) => currentCategory.indexOf(category) === index,
-    );
 
   return (
     <section className="homepage">
@@ -35,15 +43,7 @@ function HomePage() {
       <h2>Available Discussion</h2>
       <ThreadList threads={threadsList} />
 
-      {authUser && (
-        <div className="homepage__action">
-          <Link to="/thread/new">
-            <button className="action" type="button" title="Tambah">
-              <FaPlus />
-            </button>
-          </Link>
-        </div>
-      )}
+      {authUser && <HomeAction />}
     </section>
   );
 }
