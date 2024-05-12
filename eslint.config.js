@@ -28,6 +28,7 @@ export default [
     //   'cypress/globals': true
     // },
     // extends: ['plugin:cypress/recommended'],
+    ignores: ['src/stories/'],
     rules: {
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
