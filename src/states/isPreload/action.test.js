@@ -3,7 +3,7 @@
  *
  * - asyncIsPreload thunk
  *   - should dispatch actions correctly when token is present and API call succeeds
- *   - should dispatch login with null and set isPreload to false when token is present but API call fails
+ *   - should dispatch login with null and set isPreload to false when token is present
  *   - should dispatch login with null and set isPreload to false when no token is present
  */
 
@@ -41,7 +41,7 @@ describe('asyncIsPreload thunk', () => {
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 
-  it('should dispatch login with null and set isPreload to false when token is present but API call fails', async () => {
+  it('should dispatch login with null and set isPreload to false when token is present', async () => {
     api.getAccessToken.mockReturnValue('valid-token');
     api.getOwnProfile.mockRejectedValue(new Error('Failed to fetch profile'));
     const dispatch = vi.fn();
